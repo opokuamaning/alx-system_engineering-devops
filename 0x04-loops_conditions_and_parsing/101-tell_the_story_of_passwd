@@ -1,6 +1,18 @@
 #!/usr/bin/env bash
-# This script tells the story of each user in /etc/passwd
+#Script that displays the content of the file /etc/passwd
+while IFS= read -r line
+do
+    username=$(echo "$line" | cut -f 1 -d ':')
+    password=$(echo "$line" | cut -f 2 -d ':')
+    userID=$(echo "$line" | cut -f 3 -d ':')
+    groupID=$(echo "$line" | cut -f 4 -d ':')
+    userINFO=$(echo "$line" | cut -f 5 -d ':')
+    home=$(echo "$line" | cut -f 6 -d ':')
+    command=$(echo "$line" | cut -f 7 -d ':')
 
-while IFS=':' read -r username _ uid gid _ home_dir shell; do
-    echo "The user $username is part of the $gid gang, lives in $home_dir and rides $shell. $uid's place is protected by the passcode x, more info about the user here: $username"
-done < /etc/passwd
+
+    echo -n "The user $username is part of the $groupID gang, "
+    echo -n "lives in $home and rides $command."
+    echo -n " $userID's place is protected by the passcode $password, "
+    echo "more info about the user here: $userINFO"
+done < "/etc/passwd"
