@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
-# Match htn hbtn hbbtn hbbbtn
+# Match "hbtn, htn" not "hbbtn"
 
 puts ARGV[0].scan(/hb?tn/).join
