@@ -41,7 +41,7 @@ frontend opokuamaning-frontend
         default_backend opokuamaning-backend
 
 frontend opokuamaning-frontend-https
-        bind *:443 ssl crt /etc/haproxy/certs/www.clickviral.tech.pem
+        bind *:443 ssl crt /etc/haproxy/certs/www.opokuamaning.tech.pem
         http-request set-header X-Forwarded-Proto https
         default_backend opokuamaning-backend
 
